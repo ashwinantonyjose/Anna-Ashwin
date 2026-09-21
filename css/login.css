@@ -1,0 +1,277 @@
+/* ====================================================================
+   DARK ROMANTIC GLASSMORPHISM LOGIN STYLESHEET (login.css)
+   Inspired by deep purple/burgundy ambient aesthetic
+   ==================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-pink: #ec4899;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.login-page {
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 30%, #3b1735 0%, #1c0e2e 45%, #0a0514 100%);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+/* Ambient Ambient Glow Blobs */
+body.login-page::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: 20%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+body.login-page::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: 20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  animation: floatGlow 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* Glassmorphism Login Container */
+.login-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 36px;
+  padding: 3rem 2.5rem 3.5rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: cardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Profile Circular Image */
+.profile-avatar-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  padding: 4px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.05));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+.profile-avatar-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-pink));
+  opacity: 0.4;
+  filter: blur(10px);
+  z-index: -1;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.3; filter: blur(8px); }
+  100% { opacity: 0.6; filter: blur(14px); }
+}
+
+.login-title-group {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.75) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+/* Form Styles */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
+  transition: border-color 0.3s ease;
+  padding-bottom: 0.4rem;
+}
+
+.input-group:focus-within {
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.input-icon {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 0.75rem;
+}
+
+.input-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-family: inherit;
+  padding: 0.5rem 0;
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Remember & Forgot Password Row */
+.form-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.2rem;
+}
+
+.remember-me-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-custom {
+  width: 16px;
+  height: 16px;
+  accent-color: #7c3aed;
+  border-radius: 4px;
+}
+
+.forgot-link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-style: italic;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* Error Message Toast */
+.login-error-msg {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  text-align: center;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.login-error-msg.visible {
+  display: block;
+}
+
+/* Submit Button */
+.login-submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.login-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(236, 72, 153, 0.5);
+  filter: brightness(1.1);
+}
+
+.login-submit-btn:active {
+  transform: translateY(0);
+}

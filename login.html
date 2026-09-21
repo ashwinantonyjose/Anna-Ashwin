@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Ashwin & Anna</title>
+  <meta name="description" content="Private memory portal login for Ashwin and Anna.">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-page">
+
+  <div class="login-card">
+    <!-- Circular Profile Image -->
+    <div class="profile-avatar-wrapper">
+      <div class="profile-avatar-glow"></div>
+      <img src="assets/photos/main-couple-photo.jpg" alt="Ashwin & Anna" class="profile-avatar-img" id="loginAvatar">
+    </div>
+
+    <div class="login-title-group">
+      <h1 class="login-title">Ashwin &amp; Anna</h1>
+      <p class="login-subtitle">Private Memory Portal</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="login-form" autocomplete="off">
+      <div id="loginError" class="login-error-msg"></div>
+
+      <!-- Username / Email Field -->
+      <div class="input-group">
+        <span class="input-icon">✉</span>
+        <input type="text" id="usernameInput" class="input-field" placeholder="Username / Email" required autocomplete="username">
+      </div>
+
+      <!-- Password Field -->
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" id="passwordInput" class="input-field" placeholder="Password" required autocomplete="current-password">
+      </div>
+
+      <!-- Options Row -->
+      <div class="form-options-row">
+        <label class="remember-me-label">
+          <input type="checkbox" id="rememberMeCheck" class="checkbox-custom" checked>
+          <span>Remember me</span>
+        </label>
+        <a href="#" id="forgotPasswordLink" class="forgot-link">Forgot Password?</a>
+      </div>
+
+      <!-- Login Submit Button -->
+      <button type="submit" class="login-submit-btn">LOGIN</button>
+    </form>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

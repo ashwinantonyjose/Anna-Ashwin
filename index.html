@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashwin & Anna — Our Journey</title>
+  <meta name="description" content="A private romantic memory website showcasing our photos, relationship story, and special moments.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       1. HEADER & NAVIGATION
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-names">Ashwin <span class="ampersand">&</span> Anna</span>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="gallery.html" class="nav-link">Our Memories</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         2. HERO SECTION
+         ==================================================================== -->
+    <section class="hero-section">
+      <div class="hero-grid">
+        <!-- Hero Main Photo -->
+        <div class="hero-image-wrapper fade-in">
+          <img id="heroImage" src="assets/photos/main-couple-photo.jpg" alt="Couple Together" class="hero-image">
+          <div class="hero-photo-badge">
+            <span class="badge-names brand-names">Ashwin &amp; Anna</span>
+            <span class="badge-date">20 Feb 2026</span>
+          </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content fade-in">
+          <span class="hero-tagline">OUR JOURNEY</span>
+          <h1 class="hero-title">
+            <span id="heroTitleNames" class="couple-names">Ashwin &amp; Anna</span>
+          </h1>
+          <p id="heroSubtitle" class="hero-since">Together since 20 February 2026</p>
+
+          <!-- Dynamic Duration Counter Card -->
+          <div class="duration-card">
+            <span class="duration-label">RELATIONSHIP DURATION</span>
+            <div id="durationHuman" class="duration-human">Calculating...</div>
+            <div class="duration-ticker">
+              <div class="ticker-unit">
+                <span id="tickerDays" class="ticker-value">0</span>
+                <span class="ticker-label">Days</span>
+              </div>
+              <div class="ticker-unit">
+                <span id="tickerHours" class="ticker-value">00</span>
+                <span class="ticker-label">Hours</span>
+              </div>
+              <div class="ticker-unit">
+                <span id="tickerMins" class="ticker-value">00</span>
+                <span class="ticker-label">Mins</span>
+              </div>
+              <div class="ticker-unit">
+                <span id="tickerSecs" class="ticker-value">00</span>
+                <span class="ticker-label">Secs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero CTA Buttons -->
+          <div class="hero-cta-group">
+            <a href="about.html" class="btn btn-primary">About Our Relationship</a>
+            <a href="gallery.html" class="btn btn-secondary">See More Photos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. HOME HIGHLIGHTS & PREVIEW
+         ==================================================================== -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-subtitle">OUR BOND</span>
+        <h2 class="section-title">A Chapter of Love</h2>
+      </div>
+
+      <div class="story-preview-card fade-in">
+        <span class="story-quote-mark">“</span>
+        <p class="story-text">
+          Every moment spent together becomes a favorite memory. Here is a place for our stories, our milestones, and the journey we share side-by-side.
+        </p>
+        <a href="about.html" class="btn btn-secondary">Read Our Full Story</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       4. FOOTER
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-names brand-names">Ashwin &amp; Anna</div>
+      <p class="footer-date">Together since 20 February 2026 <span class="footer-heart-symbol">✦</span> Private Memory Collection</p>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       5. FULLSCREEN PHOTO VIEWER (LIGHTBOX MODAL)
+       ==================================================================== -->
+  <dialog id="lightboxDialog" class="lightbox-dialog" closedby="any" aria-label="Photo Viewer">
+    <div class="lightbox-container">
+      <div class="lightbox-topbar">
+        <span id="lightboxCounter" class="lightbox-counter">1 of 12</span>
+        <button id="lightboxCloseBtn" class="lightbox-close-btn" aria-label="Close photo viewer">&times;</button>
+      </div>
+
+      <div class="lightbox-stage">
+        <button id="lightboxPrevBtn" class="lightbox-nav-btn lightbox-prev-btn" aria-label="Previous photo">&#10094;</button>
+        <img id="lightboxImg" src="" alt="Photo view" class="lightbox-image">
+        <button id="lightboxNextBtn" class="lightbox-nav-btn lightbox-next-btn" aria-label="Next photo">&#10095;</button>
+      </div>
+
+      <div class="lightbox-meta-bar">
+        <div class="lightbox-meta-header">
+          <span id="lightboxDate"></span>
+          <span>•</span>
+          <span id="lightboxPlace"></span>
+        </div>
+        <p id="lightboxCaption" class="lightbox-caption-text"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- JavaScript Files -->
+  <script src="js/config.js?v=6"></script>
+  <script src="js/auth.js?v=6"></script>
+  <script src="js/script.js?v=6"></script>
+</body>
+</html>
