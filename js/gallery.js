@@ -10,9 +10,6 @@ let selectedFiles = [];
 let editingMemoryId = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Protect page
-  if (typeof Auth !== 'undefined') Auth.protectPage();
-
   // Load and merge memories
   await loadAndRenderGallery();
 

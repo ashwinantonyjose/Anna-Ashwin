@@ -10,30 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const passwordInput = document.getElementById('passwordInput');
   const rememberMeCheck = document.getElementById('rememberMeCheck');
   const loginError = document.getElementById('loginError');
-  const forgotLink = document.getElementById('forgotPasswordLink');
 
   if (!loginForm) return;
 
-  // Handle Form Submission
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    loginError.classList.remove('visible');
 
-    const username = usernameInput.value;
-    const password = passwordInput.value;
-    const rememberMe = rememberMeCheck.checked;
+    const submitButton = loginForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
 
-    // Call Auth login method
-    const result = Auth.login(username, password, rememberMe);
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: usernameInput.value,
+          password: passwordInput.value,
+          rememberMe: rememberMeCheck.checked
+        })
+      });
+      const result = await response.json();
 
-    if (result.success) {
-      loginError.classList.remove('visible');
-      // Redirect to home page
+      if (!response.ok) throw new Error(result.message || 'Login failed. Please try again.');
       window.location.href = 'index.html';
-    } else {
-      loginError.textContent = result.message || 'Invalid username or password. Please try again.';
+    } catch (error) {
+      loginError.textContent = error.message || 'Unable to log in. Please try again.';
       loginError.classList.add('visible');
-      
-      // Shake effect on error
+
       const card = document.querySelector('.login-card');
       if (card) {
         card.style.animation = 'none';
@@ -41,16 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.animation = 'shake 0.4s ease';
         }, 10);
       }
+    } finally {
+      submitButton.disabled = false;
     }
   });
-
-  // Handle Forgot Password click
-  if (forgotLink) {
-    forgotLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Hint: Use username "annaashwin" and password "20022026" ♡');
-    });
-  }
 });
 
 // Add keyframe shake animation dynamically for invalid login

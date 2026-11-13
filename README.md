@@ -12,7 +12,7 @@ An elegant, modern, minimal, and premium personal relationship website designed 
 - **Masonry Photo Gallery**: Aesthetic responsive collage arrangement supporting portrait, landscape, and square photos with smooth hover zoom effects.
 - **Fullscreen Touch-Friendly Lightbox**: Click any photo to view in high resolution with Date, Place, Caption, Prev/Next navigation, Keyboard shortcuts (Arrow Keys / Esc), and mobile touch swipe support.
 - **Session Photo Upload Preview**: HTML5 Drag & Drop or file picker to temporarily preview photos in your gallery during your browser session without needing a backend.
-- **100% Front-End & Easy to Edit**: Built strictly with HTML, CSS, and Vanilla JavaScript. No backend, database, or build tools required.
+- **Private Sign-In**: Server-side Vercel authentication permits only the two configured accounts. There is no public account-creation flow.
 
 ---
 
@@ -96,18 +96,21 @@ Place your photos in `assets/photos/` (e.g., `my-photo.jpg`). Then add or edit e
 ## 🚀 How to Run Locally & Deploy
 
 ### Running Locally
-Simply double-click `index.html` to open in any web browser, or launch a simple local HTTP server:
+Authentication is enforced by Vercel server-side middleware and API routes. Do not use Python's HTTP server, `npx serve`, or open the HTML files directly for a private deployment; those methods do not enforce login.
 
 ```bash
-# Using Python
-python3 -m http.server 3000
-
-# Using Node / npx
-npx serve .
+npx vercel dev
 ```
 
-Open `http://localhost:3000` in your browser.
+Before running locally, link the project with the Vercel CLI and create `.env.local` with the five environment variables listed below. Keep that file private; it is excluded from Git.
 
-### Free One-Click Hosting
-- **GitHub Pages**: Upload repository to GitHub -> Settings -> Pages -> Deploy from main branch.
-- **Vercel / Netlify**: Drag & drop the project folder directly onto [Netlify Drop](https://app.netlify.com/drop) or [Vercel](https://vercel.com).
+### Deploying Privately on Vercel
+In the Vercel project settings, add these environment variables for the deployment:
+
+- `ANNA_USERNAME`
+- `ANNA_PASSWORD`
+- `ASHWIN_USERNAME`
+- `ASHWIN_PASSWORD`
+- `AUTH_SECRET` — use a random secret of at least 32 characters (for example, generate one with `openssl rand -base64 32`)
+
+Set the username and password values privately in Vercel; do not put real credentials in source files or commit them. After adding or changing variables, redeploy the project. Static-only hosts and simple local HTTP servers do not run the authentication middleware, so they cannot provide this access restriction.
